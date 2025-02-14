@@ -1,0 +1,33 @@
+/* Custom styles for the homepage */
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+}
+
+.rounded-circle {
+    border: 5px solid #fff;
+}
+
+
+/* static/css/styles.css */
+.certifications-section .card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.certifications-section h5 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.certifications-section .text-muted {
+    font-size: 0.9rem;
+}
+
+.certifications-section .btn-outline-primary {
+    font-size: 0.875rem;
+    padding: 0.25rem 0.75rem;
+}

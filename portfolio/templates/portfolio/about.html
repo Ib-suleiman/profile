@@ -1,0 +1,114 @@
+<!-- templates/about.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="about-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-4">About Me</h2>
+            <p class="lead">Full-stack developer with over 2 years of experience building web applications from concept to deployment</p>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title mb-4">Technical Skills</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Frontend Development</h4>
+                        <ul class="list-unstyled">
+                            <li>✔ HTML5/CSS3 (Sass, LESS)</li>
+                            <li>✔ JavaScript (ES6+)</li>
+                            <li>✔ React.js + Redux</li>
+                            <li>✔ Responsive Design</li>
+                            <li>✔ Web Performance Optimization</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Backend & DevOps</h4>
+                        <ul class="list-unstyled">
+                            <li>✔ Python/Django & Django REST</li>
+                            <li>✔ Database Design (PostgreSQL, MySQL)</li>
+                            <li>✔ RESTful API Development</li>
+                            <li>✔ Docker & Kubernetes</li>
+                            <li>✔ AWS & Heroku Deployment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education & Certifications -->
+        <div class="row">
+            <!-- Education -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Education</h3>
+                        {% for edu in education %}
+                        <div class="mb-4">
+                            <h5>{{ edu.institution }}</h5>
+                            <h6 class="text-muted">{{ edu.degree }}</h6>
+                            <small class="text-muted">{{ edu.duration }}</small>
+                            <p class="mt-2">{{ edu.description }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Certifications</h3>
+                        <div class="mb-4">
+                            <h5>AWS Certified Developer</h5>
+                            <p class="text-muted">Amazon Web Services (2023)</p>
+                        </div>
+                        <div class="mb-4">
+                            <h5>Professional Scrum Master I</h5>
+                            <p class="text-muted">Scrum.org (2022)</p>
+                        </div>
+                        <div class="mb-4">
+                            <h5>React Advanced Concepts</h5>
+                            <p class="text-muted">Frontend Masters (2021)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Experience -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title mb-4">Professional Experience</h3>
+                {% for exp in experience %}
+                <div class="experience-item mb-5">
+                    <div class="d-flex justify-content-between">
+                        <h4>{{ exp.position|safe }}</h4>
+                        <span class="text-muted">{{ exp.duration|safe }}</span>
+                    </div>
+                    <h5 class="text-muted mb-3">{{ exp.company|safe }}</h5>
+                    <ul class="list-unstyled">
+                        <ul>
+                            {% for point in exp.description.splitlines %}  
+                                {% if point %}  {# Avoid empty lines #}
+                                    <li class="mb-2">{{ point }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </ul>
+                    <!-- <div class="tech-stack">
+                        <span class="badge bg-primary me-1">Django</span>
+                        <span class="badge bg-primary me-1">React</span>
+                        <span class="badge bg-primary me-1">PostgreSQL</span>
+                    </div> -->
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

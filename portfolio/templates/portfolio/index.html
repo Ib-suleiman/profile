@@ -1,0 +1,14 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="home-section text-center">
+    <div class="container">
+        <img src="{% static 'portfolio/images/DSCN4685.JPG' %}" alt="Profile Picture" class="rounded-circle mb-3" width="150">
+        <h1>Welcome to My Portfolio</h1>
+        <p class="lead">{{ tagline }}</p>
+        <p>{{ bio }}</p>
+    </div>
+</section>
+{% endblock %}

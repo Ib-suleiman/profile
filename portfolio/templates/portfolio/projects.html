@@ -1,0 +1,62 @@
+<!-- templates/projects.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="projects-section">
+    <div class="container">
+        <!-- Page Header -->
+        <div class="text-center mb-5">
+            <h2 class="display-4">Projects</h2>
+            <p class="lead">A showcase of my work, from frontend designs to full-stack applications</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="filter-buttons mb-5 text-center">
+            <a href="?category=" class="btn btn-outline-primary {% if not request.GET.category %}active{% endif %}">All</a>
+            <a href="?category=DJ" class="btn btn-outline-primary {% if request.GET.category == 'DJ' %}active{% endif %}">Django</a>
+            <a href="?category=FE" class="btn btn-outline-primary {% if request.GET.category == 'FE' %}active{% endif %}">Frontend</a>
+            <a href="?category=FS" class="btn btn-outline-primary {% if request.GET.category == 'FS' %}active{% endif %}">Full Stack</a>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="row">
+            {% for project in projects %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <!-- Project Image -->
+                    <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}">
+                    
+                    <!-- Project Details -->
+                    <div class="card-body">
+                        <h5 class="card-title">{{ project.title }}</h5>
+                        <p class="card-text">{{ project.description }}</p>
+                    </div>
+
+                    <!-- Technologies Used -->
+                    <div class="card-footer bg-transparent">
+                        <div class="tech-stack mb-3">
+                            {% for tech in project.technologies_used.split %}
+                            <span class="badge bg-secondary me-1">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <!-- Project Links -->
+                        <div class="btn-group w-100">
+                            <a href="{{ project.github_url }}" class="btn btn-sm btn-outline-secondary" target="_blank">
+                                <i class="fas fa-code"></i> GitHub
+                            </a>
+                            {% if project.demo_url %}
+                            <a href="{{ project.demo_url }}" class="btn btn-sm btn-outline-primary" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
